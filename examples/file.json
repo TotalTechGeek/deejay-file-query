@@ -1,0 +1,44 @@
+{
+    "people": [
+        {
+            "name": "Caleb Reeves",
+            "age": 41
+        },
+        {
+            "name": "Irene Barton",
+            "age": 50
+        },
+        {
+            "name": "Mike Reyes",
+            "age": 47
+        },
+        {
+            "name": "Alejandro Francis",
+            "age": 47
+        },
+        {
+            "name": "Rosa Stanley",
+            "age": 22
+        },
+        {
+            "name": "Kevin Ray",
+            "age": 37
+        },
+        {
+            "name": "Kevin Barrett",
+            "age": 37
+        },
+        {
+            "name": "Mike Park",
+            "age": 27
+        },
+        {
+            "name": "Antonio Frank",
+            "age": 45
+        },
+        {
+            "name": "Mike Xavier",
+            "age": 27
+        }
+    ]
+}
