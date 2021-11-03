@@ -1,6 +1,6 @@
 {
   "name": "deejay-file-query",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A CLI tool that uses the deejay DSL to parse files",
   "main": "index.js",
   "author": "Jesse Daniel Mitchell",
@@ -16,5 +16,9 @@
   "bin": {
     "deejay": "./index.js"
   },
-  "type": "module"
+  "type": "module",
+  "repository": {
+    "url": "https://github.com/TotalTechGeek/deejay-file-query",
+    "type": "git+https"
+  }
 }
