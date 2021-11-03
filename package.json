@@ -1,10 +1,11 @@
 {
   "name": "deejay-file-query",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI tool that uses the deejay DSL to parse files",
   "main": "index.js",
   "author": "Jesse Daniel Mitchell",
   "license": "MIT",
+  "preferGlobal": true,
   "dependencies": {
     "commander": "^8.3.0",
     "csv-parser": "^3.0.0",
@@ -12,6 +13,6 @@
     "rxjs": "^7.4.0"
   },
   "bin": {
-    "deejay": "./index.js" 
+    "deejay": "./index.js"
   }
 }

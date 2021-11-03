@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { Command, Option } = require('commander')
 const { dsl } = require('deejay-rxjs-dsl')
 const { from } = require('rxjs')
@@ -6,7 +7,7 @@ const path = require('path')
 const { csvObservable } = require('./csv-to-observer')
 
 const program = new Command()
-program.version('0.0.2').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('0.0.3').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv'])
 
