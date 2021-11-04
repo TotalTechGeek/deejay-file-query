@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// @ts-check
 import { Command, Option } from 'commander'
 import { dsl } from 'deejay-rxjs-dsl'
 import { createInput } from './inputs/create.js'
@@ -22,6 +23,7 @@ program.parse(process.argv)
 const options = program.opts()
 
 createInput(options.input, options.format, options.additional).pipe(
+    // @ts-ignore This is correct.
     ...dsl(`${options.command};`),
     createOutput(options.output, options.export)
 ).subscribe()

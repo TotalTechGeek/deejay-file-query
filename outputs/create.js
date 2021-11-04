@@ -1,3 +1,4 @@
+// @ts-check
 import { ConsoleOutput } from "./console.js"
 import { CSVOutput } from "./csv.js"
 import { JSONOutput } from "./json.js"

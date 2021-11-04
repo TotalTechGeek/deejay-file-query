@@ -1,23 +1,10 @@
-
-
-import { Observable } from 'rxjs'
-
+// @ts-check
+import { tap, pipe } from 'rxjs'
 
 /**
  * @returns An Observable that emits the console output.
  */
-export const ConsoleOutput = () => source => new Observable(observer => {
-    source.subscribe({
-        next: value => {
-            console.log(value)
-            observer.next(value)
-        },
-        error: error => {
-            observer.error(error)
-        },
-        complete: () => {
-            observer.complete()
-        }
-    })
-})
+export const ConsoleOutput = () => pipe(
+    tap(console.log)
+)
 

@@ -1,5 +1,6 @@
-import JSONStream from 'JSONStream'
+// @ts-check
 import fs from 'fs'
+import JSONStream from 'JSONStream'
 import { Observable } from 'rxjs'
 
 /**
