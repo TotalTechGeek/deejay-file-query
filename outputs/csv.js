@@ -9,7 +9,7 @@ import { createOutStream } from './outStream.js'
  * @param {string} [file] The name of the file to export to
  * @returns An observable that emits the CSV data.
  */
-export const CSVOutput = (file) =>{
+export const CSVOutput = (file) => {
     const fileStream = createOutStream(file, 'csv')
     const outStream = csv.format({ headers: true })
     outStream.pipe(fileStream, { end: true })
