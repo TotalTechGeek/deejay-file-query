@@ -13,13 +13,14 @@ A program written to allow you to use the deejay DSL on files to query out data.
 
 Options:
   -V, --version            output the version number
-  -f, --format <format>    The format of the file (choices: "json", "csv", "bigjson")
-  -i, --input <file>       The file to be processed
+  -f, --format <format>    The format of the file (choices: "json", "csv", "bigjson", "avro")
+  -i, --input <file>       The file to be processed (default: "$")
   -c, --command <command>  The command to run (default: "")
   -o, --output <file>      Output file
-  -x, --export <mode>      The output format (choices: "console", "json", "csv", default: "console")
+  -x, --export <mode>      The output format (choices: "console", "json", "csv", "avro", default: "console")
   -a, --additional <info>  Additional information for the file parser
   -h, --help               display help for command
+
 ```
 
 ---

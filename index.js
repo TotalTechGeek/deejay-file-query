@@ -6,7 +6,7 @@ import { createInput } from './inputs/create.js'
 import { createOutput } from './outputs/create.js'
 
 const program = new Command()
-program.version('1.0.5').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.6').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro']).default('console')
