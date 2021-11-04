@@ -1,6 +1,6 @@
 // @ts-check
-import fs from 'fs'
 import JSONStream from 'JSONStream'
+import { getReadStream } from './stream.js'
 import { streamToObservable } from './streamToObservable.js'
 
 /**
@@ -12,6 +12,6 @@ import { streamToObservable } from './streamToObservable.js'
  * @returns 
  */
 export function jsonObservable (file, path = '*') {
-    const stream = fs.createReadStream(file).pipe(JSONStream.parse(path))
+    const stream = getReadStream(file).pipe(JSONStream.parse(path))
     return streamToObservable(stream)
 }

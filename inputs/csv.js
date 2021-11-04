@@ -1,6 +1,6 @@
 // @ts-check
 import csv from 'fast-csv'
-import fs from 'fs'
+import { getReadStream } from './stream.js'
 import { streamToObservable } from './streamToObservable.js'
 
 /**
@@ -10,6 +10,6 @@ import { streamToObservable } from './streamToObservable.js'
  * @returns An Observable of the CSV data.
  */
 export function csvObservable (file, additional) {
-    const stream = fs.createReadStream(file).pipe(csv.parse({ headers: true }))
+    const stream = getReadStream(file).pipe(csv.parse({ headers: true }))
     return streamToObservable(stream)
 }

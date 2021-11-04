@@ -6,13 +6,13 @@ import { createInput } from './inputs/create.js'
 import { createOutput } from './outputs/create.js'
 
 const program = new Command()
-program.version('1.0.0').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.5').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
-const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson'])
-const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv']).default('console')
+const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro'])
+const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro']).default('console')
 
 program.addOption(formatOption)
-    .requiredOption('-i, --input <file>', 'The file to be processed')
+    .option('-i, --input <file>', 'The file to be processed', '$')
     .option('-c, --command <command>', 'The command to run', '')
     .option('-o, --output <file>', 'Output file')
     .addOption(outputOption)

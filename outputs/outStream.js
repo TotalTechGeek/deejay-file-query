@@ -12,9 +12,22 @@ import fs from 'fs'
  */
 export function createOutStream (file, format = 'json') {
     if (file) {
-        // if the extension does not match the format, add it
-        if(path.extname(file).substring(1).toLowerCase() !== format) file += `.${format}`
-        return fs.createWriteStream(file)
+        return fs.createWriteStream(correctExtension(file, format))
     }
     return process.stdout
 }
+
+
+/**
+ * Corrects the extension on the file name.
+ * @param {string} file The name of the file.
+ * @param {string} format The extension that is expected
+ * @returns 
+ */
+export function correctExtension (file, format = 'json') {
+    // if the extension does not match the format, add it
+    if(path.extname(file).substring(1).toLowerCase() !== format) {
+        return `${file}.${format}`
+    }
+    return file
+} 
