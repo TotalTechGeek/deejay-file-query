@@ -13,10 +13,7 @@ import fs from 'fs'
 export function createOutStream (file, format = 'json') {
     if (file) {
         // if the extension does not match the format, add it
-        if(path.extname(file).substring(1).toLowerCase() !== format) {
-            file += `.${format}`
-        }
-
+        if(path.extname(file).substring(1).toLowerCase() !== format) file += `.${format}`
         return fs.createWriteStream(file)
     }
     return process.stdout
