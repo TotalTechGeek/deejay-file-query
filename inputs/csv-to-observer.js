@@ -1,7 +1,7 @@
 // @ts-check
 import csv from 'fast-csv'
 import fs from 'fs'
-import { Observable } from 'rxjs'
+import { streamToObservable } from './streamToObservable.js'
 
 /**
  * Reads in the data from a CSV file and emits values as they stream in.
@@ -10,22 +10,6 @@ import { Observable } from 'rxjs'
  * @returns An Observable of the CSV data.
  */
 export function csvObservable (file, additional) {
-    return new Observable(observer => {
-        const stream = fs.createReadStream(file)
-            .pipe(csv.parse({ headers: true }))
-            .on('data', (data) => {
-                observer.next(data)   
-            })
-            .on('end', () => {
-                observer.complete()
-            })
-            .on('error', error => {
-                observer.error(error)
-            })
-
-        return () => {
-            stream.end()
-        }
-    })
-
+    const stream = fs.createReadStream(file).pipe(csv.parse({ headers: true }))
+    return streamToObservable(stream)
 }

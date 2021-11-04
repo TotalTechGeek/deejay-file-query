@@ -1,7 +1,7 @@
 // @ts-check
 import fs from 'fs'
 import JSONStream from 'JSONStream'
-import { Observable } from 'rxjs'
+import { streamToObservable } from './streamToObservable.js'
 
 /**
  * A mechanism that uses JSONStream to convert a JSON file into an Observable, which allows the data to be streamed in 
@@ -12,22 +12,6 @@ import { Observable } from 'rxjs'
  * @returns 
  */
 export function jsonObservable (file, path = '*') {
-    return new Observable(observer => {
-        const stream = fs.createReadStream(file)
-            .pipe(JSONStream.parse(path))
-            .on('data', (data) => {
-                observer.next(data)   
-            })
-            .on('end', () => {
-                observer.complete()
-            })
-            .on('error', error => {
-                observer.error(error)
-            })
-
-        return () => {
-            stream.end()
-        }
-    })
-
+    const stream = fs.createReadStream(file).pipe(JSONStream.parse(path))
+    return streamToObservable(stream)
 }
