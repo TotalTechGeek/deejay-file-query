@@ -1,5 +1,5 @@
 // @ts-check
-import { tap, finalize } from 'rxjs'
+import { tap, finalize, pipe } from 'rxjs'
 import { createOutStream } from './outStream.js'
 
 /**
@@ -7,11 +7,11 @@ import { createOutStream } from './outStream.js'
  * @param {string} [file] The name of the file to export to.
  * @returns An observable that emits the JSON data to the specified file.
  */
-export const JSONOutput = (file) => /** @param {import('rxjs').Observable} source */ source => {
+export const JSONOutput = (file) => {
     const outStream = createOutStream(file, 'json')
     let first = true
     outStream.write('[')
-    return source.pipe(
+    return pipe(
         tap(value => {
             if (!first) outStream.write(',')
             outStream.write(JSON.stringify(value))
