@@ -60,10 +60,10 @@ date-fns@^2.23.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
   integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
-deejay-rxjs-dsl@^2.0.7:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-2.0.7.tgz#2337c1206a292cdee4a3129b519870070f59ffba"
-  integrity sha512-REVRZxlnzZEUpIaGe/LF8OdMILjf7kTvFshPBIHxM2js8RnZxV4jv2moqkopDF8YVL9+9a8gUQDS6oEdqCXTFQ==
+deejay-rxjs-dsl@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.2.tgz#c441d35c639cd902813eb5b9628358c6709d1e68"
+  integrity sha512-FIqUbixB5MdgtOU5rq/z/YBjhnpcjAfvy9pob9DNFPfm2TWHybo3G8gszYXqvoqsqsWf2N+o4aBHUNJ96Pe8Ow==
   dependencies:
     "@types/lodash" "^4.14.172"
     date-fns "^2.23.0"

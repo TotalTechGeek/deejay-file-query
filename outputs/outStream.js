@@ -12,6 +12,8 @@ import fs from 'fs'
  */
 export function createOutStream (file, format = 'json') {
     if (file) {
+        // remove all nonalphanumeric, space, or underscore characters, periods or slashes from the file name
+        file = file.replace(/[^a-zA-Z0-9_\s./]/g, '')
         return fs.createWriteStream(correctExtension(file, format))
     }
     return process.stdout
