@@ -55,10 +55,10 @@ date-fns@^2.23.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
   integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
-deejay-rxjs-dsl@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.5.tgz#c4a8dcb4e6513c886b5582ffa597fb2a4856116d"
-  integrity sha512-YDEI252orzV8uLoz2stynrB6JxzWlgxcn/DjoRh7RLbyx5CLETePp3p0n0fcgsKUbEk1GwwI661nmcX7mvBGGQ==
+deejay-rxjs-dsl@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.6.tgz#291476bba6ffe9280999b60f99ca1883ebcba6d4"
+  integrity sha512-ueNtS2IjN5Gm0VX6y9T6oJL3fimDg++ZDiKQc9TdUv6av/+Jw2u+WD9Uavn7guEv7H6FtuV9vlf0VTHbCYtbFw==
   dependencies:
     date-fns "^2.23.0"
     expiry-map "^1.1.0"
