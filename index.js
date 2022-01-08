@@ -1,33 +1,61 @@
 #!/usr/bin/env node
 // @ts-check
 import { Command, Option } from 'commander'
-import { dsl } from 'deejay-rxjs-dsl'
+import { LogicEngine } from 'json-logic-engine'
+import { dsl, setupEngine } from 'deejay-rxjs-dsl'
 import { convertOperators } from './convertOperator.js'
-import { createInput } from './inputs/create.js'
+import { createInput, register } from './inputs/create.js'
 import { createOutput, Outputs } from './outputs/create.js'
-
+import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.8').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.9').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
-const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro'])
+const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
 
 program.addOption(formatOption)
     .option('-i, --input <file>', 'The file to be processed', '$')
     .option('-c, --command <command>', 'The command to run', '')
     .option('-o, --output <file>', 'Output file')
+    .option('-e, --extension <extension>', 'An extension file that can be parsed.')
     .addOption(outputOption)
     .option('-a, --additional <info>', 'Additional information for the file parser')
     
 
 program.parse(process.argv)
+
+/** @type {{ format: 'csv'|'bigjson'|'json'|'avro'|'custom', input: string, additional: string, output: string, export: 'console'|'json'|'csv'|'avro', extension?: string }} */
 const options = program.opts()
+
+const engine = setupEngine(new LogicEngine())
+const additionalOperators = convertOperators(Outputs)
+
+if (options.extension) {
+    // check if the extension is a file or a directory
+    const stats = fs.lstatSync(`./${options.extension}`)
+
+    if (stats.isDirectory()) {
+        options.extension = `./${options.extension}/index.js`
+    } else if (!stats.isFile()) {
+        options.extension = `./${options.extension}.js`
+    }
+
+    // @ts-ignore We want to use top-level await.
+    const { setup, inputs, operators } = (await import(`file://${process.cwd()}/${options.extension}`))
+
+    Object.assign(additionalOperators, operators || {})
+    if (setup) setup(engine)
+    if (inputs) {
+        for (const input in inputs) register(input, inputs[input])
+    }
+}
 
 createInput(options.input, options.format, options.additional).pipe(
     // @ts-ignore This is correct.
     ...dsl(`${options.command};`, {
-        additionalOperators: convertOperators(Outputs)    
+        additionalOperators,
+        engine
     }),
     createOutput(options.output, options.export)
 ).subscribe()

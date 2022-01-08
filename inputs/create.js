@@ -1,16 +1,31 @@
 // @ts-check
 import fs from 'fs'
 import path from 'path'
-import { from } from 'rxjs'
+import { from, Observable } from 'rxjs'
 import { avroObservable } from './avro.js'
 import { csvObservable } from './csv.js'
 import { jsonObservable } from './json.js'
 
 /**
+ * Extra Input Observables that are registered by an extension
+ * @type {{ [key: string]: (...args: any[]) => Observable<any> }}
+ */
+const imports = {}
+
+/**
+ * Register an extra input observable.
+ * @param {string} name 
+ * @param {(...args: any[]) => Observable<any>} func 
+ */
+export function register (name, func) {
+    imports[name] = func
+}
+
+/**
  * A factory function that creates an observable that emits the contents of a file.
  * @param {string} file 
- * @param {'csv'|'bigjson'|'json'|'avro'} format 
- * @param {string} [additional] Additional information to be passed to the input observer
+ * @param {'csv'|'bigjson'|'json'|'avro'|'custom'} format 
+ * @param {any} [additional] Additional information to be passed to the input observer
  * @returns An input observable.
  */
 export function createInput (file, format, additional) {
@@ -44,5 +59,8 @@ export function createInput (file, format, additional) {
         return from([data])
     }
 
+    if (format === 'custom') {
+        if (!imports[file]) throw new Error('Unimplemented Custom Input')
+        return imports[file](file, additional)
+    }
 }
-

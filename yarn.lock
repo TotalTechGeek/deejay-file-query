@@ -27,11 +27,6 @@
     lodash.isundefined "^3.0.1"
     lodash.uniq "^4.5.0"
 
-"@types/lodash@^4.14.172":
-  version "4.14.176"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.176.tgz#641150fc1cda36fbfa329de603bbb175d7ee20c0"
-  integrity sha512-xZmuPTa3rlZoIbtDUyJKZQimJV3bxCmzMIO2c9Pz9afyDro6kr7R79GwcB6mRhuoPmV2p1Vb66WOJH7F886WKQ==
-
 "@types/node@^14.0.1":
   version "14.17.32"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.17.32.tgz#2ca61c9ef8c77f6fa1733be9e623ceb0d372ad96"
@@ -60,18 +55,18 @@ date-fns@^2.23.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
   integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
-deejay-rxjs-dsl@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.2.tgz#c441d35c639cd902813eb5b9628358c6709d1e68"
-  integrity sha512-FIqUbixB5MdgtOU5rq/z/YBjhnpcjAfvy9pob9DNFPfm2TWHybo3G8gszYXqvoqsqsWf2N+o4aBHUNJ96Pe8Ow==
+deejay-rxjs-dsl@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.5.tgz#c4a8dcb4e6513c886b5582ffa597fb2a4856116d"
+  integrity sha512-YDEI252orzV8uLoz2stynrB6JxzWlgxcn/DjoRh7RLbyx5CLETePp3p0n0fcgsKUbEk1GwwI661nmcX7mvBGGQ==
   dependencies:
-    "@types/lodash" "^4.14.172"
     date-fns "^2.23.0"
     expiry-map "^1.1.0"
     json-logic-engine "^1.1.13"
     json-power-query "^1.1.15"
     lodash.throttle "^4.1.1"
     ramda "^0.27.1"
+    ramda-adjunct "^2.35.0"
     rxjs "^7.3.0"
 
 expiry-map@^1.1.0:
@@ -162,6 +157,11 @@ p-defer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/p-defer/-/p-defer-1.0.0.tgz#9f6eb182f6c9aa8cd743004a7d4f96b196b0fb0c"
   integrity sha1-n26xgvbJqozXQwBKfU+WsZaw+ww=
+
+ramda-adjunct@^2.35.0:
+  version "2.35.0"
+  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.35.0.tgz#67ff6a36e152c20d785da0a072c90b269fcc15ad"
+  integrity sha512-r/U0BpJ04mFzFsQK1Ro+e38v/GfvlqQZyKohJxPq/3ADQrJG3/DdpOhYfrt94HTk2NM5WkXxQiOpVg987yrEFQ==
 
 ramda@^0.27.1:
   version "0.27.1"
