@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // @ts-check
 import { Command, Option } from 'commander'
-import { LogicEngine } from 'json-logic-engine'
+import { LogicEngine, AsyncLogicEngine } from 'json-logic-engine'
 import { dsl, setupEngine } from 'deejay-rxjs-dsl'
 import { convertOperators } from './convertOperator.js'
 import { createInput, register } from './inputs/create.js'
@@ -9,7 +9,7 @@ import { createOutput, Outputs } from './outputs/create.js'
 import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.10').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.11').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
@@ -17,18 +17,25 @@ const outputOption = new Option('-x, --export <mode>', 'The output format').choi
 program.addOption(formatOption)
     .option('-i, --input <file>', 'The file to be processed', '$')
     .option('-c, --command <command>', 'The command to run', '')
+    .option('-p, --program <program>', 'The script to run', '')
     .option('-o, --output <file>', 'Output file')
     .option('-e, --extension <extension>', 'An extension file that can be parsed.')
     .addOption(outputOption)
     .option('-a, --additional <info>', 'Additional information for the file parser')
-    
 
 program.parse(process.argv)
 
-/** @type {{ format: 'csv'|'bigjson'|'json'|'avro'|'custom', input: string, additional: string, output: string, export: 'console'|'json'|'csv'|'avro', extension?: string }} */
+/** @type {{ format: 'csv'|'bigjson'|'json'|'avro'|'custom', input: string, additional: string, output: string, export: 'console'|'json'|'csv'|'avro', extension?: string, command: string, program: string }} */
 const options = program.opts()
 
+if (options.program && options.command) throw new Error('Cannot have both a command (-c) & a program (-p) set.')
+if (options.program) options.command = fs.readFileSync(options.program, 'utf8').toString()
+
 const engine = setupEngine(new LogicEngine())
+
+/** @type {AsyncLogicEngine} */ // @ts-ignore
+const asyncEngine = setupEngine(new AsyncLogicEngine())
+
 const additionalOperators = convertOperators(Outputs)
 
 if (options.extension) {
@@ -42,10 +49,17 @@ if (options.extension) {
     }
 
     // @ts-ignore We want to use top-level await.
-    const { setup, inputs, operators } = (await import(`file://${process.cwd()}/${options.extension}`))
+    const { asyncSetup, setup, inputs, operators } = (await import(`file://${process.cwd()}/${options.extension}`))
 
     Object.assign(additionalOperators, operators || {})
-    if (setup) setup(engine)
+    
+    if (setup) { 
+        setup(engine)
+        setup(asyncEngine)
+    }
+
+    if (asyncSetup) asyncSetup(asyncEngine)
+
     if (inputs) {
         for (const input in inputs) register(input, inputs[input])
     }
@@ -55,7 +69,8 @@ createInput(options.input, options.format, options.additional).pipe(
     // @ts-ignore This is correct.
     ...dsl(`${options.command};`, {
         additionalOperators,
-        engine
+        engine,
+        asyncEngine
     }),
     createOutput(options.output, options.export)
 ).subscribe()
