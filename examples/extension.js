@@ -8,3 +8,7 @@ export const inputs = {
     from: (_, additional) => from((additional || '').split(','))
 }
 
+export const setup = (engine) => {
+    engine.addMethod('test', () => 1)
+    return engine
+}
