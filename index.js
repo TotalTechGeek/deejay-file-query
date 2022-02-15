@@ -9,7 +9,7 @@ import { createOutput, Outputs } from './outputs/create.js'
 import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.12').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.13').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
@@ -49,7 +49,7 @@ if (options.extension) {
     }
 
     // @ts-ignore We want to use top-level await.
-    const { asyncSetup, setup, inputs, operators } = (await import(`file://${process.cwd()}/${options.extension}`))
+    const { asyncSetup, setup, inputs, operators, macros } = (await import(`file://${process.cwd()}/${options.extension}`))
 
     Object.assign(additionalOperators, operators || {})
     
@@ -62,6 +62,13 @@ if (options.extension) {
 
     if (inputs) {
         for (const input in inputs) register(input, inputs[input])
+    }
+
+    if (macros) {
+        options.command = options.command.replace(/\r\n/g, '\n')
+        for (const macro in macros) {
+            options.command = options.command.replace(new RegExp(`(^|\n|;)\\s*${macro}\\s*(\n|;|$)`, 'g'), `\n${macros[macro]}\n`)
+        }
     }
 }
 

@@ -8,7 +8,11 @@ export const inputs = {
     from: (_, additional) => from((additional || '').split(','))
 }
 
+export const macros = {
+    macro: `sum @.age; map @ * test()`
+}
+
 export const setup = (engine) => {
-    engine.addMethod('test', () => 1)
+    engine.addMethod('test', () => 2)
     return engine
 }

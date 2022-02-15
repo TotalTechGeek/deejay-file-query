@@ -1,2 +1,1 @@
-sum @.age
-map @ * 2
+macro 
