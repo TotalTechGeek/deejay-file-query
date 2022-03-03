@@ -55,20 +55,19 @@ date-fns@^2.23.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.25.0.tgz#8c5c8f1d958be3809a9a03f4b742eba894fc5680"
   integrity sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==
 
-deejay-rxjs-dsl@^3.0.17:
-  version "3.0.17"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.17.tgz#51ac603134f34715bf70e9f95b526ac7bc92faf6"
-  integrity sha512-ANIxszT+teI7OIvKMT86iWjd15LYdsUATy+JDOx8IzTTQ7aSeaRy0JZWA3++pX8vH7v7k4pG718wdBXBPruFfQ==
+deejay-rxjs-dsl@^3.0.18:
+  version "3.0.18"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.18.tgz#aa7cab69232806ca2cc435804183e93c6869438a"
+  integrity sha512-diYQkERVXIuUOQ4C2XAQs9g8cXYPKqqC07RergS53efcjZGpFCFnazzFFDYr3xtzo/QuAUI8lZsaaPccoEA2wQ==
   dependencies:
     date-fns "^2.23.0"
     expiry-map "^1.1.0"
-    json-logic-engine "^1.1.16"
-    json-power-query "^1.1.16"
+    json-logic-engine "^1.1.17"
+    json-power-query "^1.1.17"
     lodash.throttle "^4.1.1"
     ramda "^0.27.1"
     ramda-adjunct "^2.35.0"
     rxjs "^7.3.0"
-    strip-comments "^2.0.1"
 
 expiry-map@^1.1.0:
   version "1.1.0"
@@ -85,17 +84,17 @@ fast-csv@^4.3.6:
     "@fast-csv/format" "4.3.5"
     "@fast-csv/parse" "4.3.6"
 
-json-logic-engine@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-1.1.16.tgz#0775e9b8d2f5fb2bd3d7ce47a1db057e3f53254a"
-  integrity sha512-dry8KUiaJSQs/qoxBLoGHXonNoU4z9gxnodqnjcZUAjKxG8LOigc1ClO8j1VCqDCbxnRBopwZel5WpgSce/JfQ==
+json-logic-engine@^1.1.17:
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-1.1.17.tgz#59ffd1798d58559a17b2d6c7f39bc726863333fe"
+  integrity sha512-nf8K63yKeFpwjYj4ENtQZ64gIGZSB7fuEXSNX6UAoLDh4YJDJ0/37MEvu6Nf6zNw1NUgESGKwdrEQ3LQVq0B9Q==
 
-json-power-query@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/json-power-query/-/json-power-query-1.1.16.tgz#148ecdf59235b9b182dc6686ba386e59e254acb7"
-  integrity sha512-oplxHiAKfw6c36yTKPO4qz8TyHjbWOhuNC/NF8VXwVG52Sk7mebsOXqLdXQ/TaBmvbIdt3HzP1HB+Q1QULqgAw==
+json-power-query@^1.1.17:
+  version "1.1.17"
+  resolved "https://registry.yarnpkg.com/json-power-query/-/json-power-query-1.1.17.tgz#b3e9c54b249f7086883d76ae6dcb5e9f6a84e130"
+  integrity sha512-NywDQhy5F2jR+B8kGFhyQa+LDkKu4maswqYYC7Oe3RBm4DmTuOjRBnUBJ8ZhyByLSduILjH1ilq9K0gotTrtYw==
   dependencies:
-    json-logic-engine "^1.1.16"
+    json-logic-engine "^1.1.17"
 
 jsonparse@^1.2.0:
   version "1.3.1"
@@ -175,11 +174,6 @@ rxjs@^7.3.0, rxjs@^7.4.0:
   integrity sha512-7SQDi7xeTMCJpqViXh8gL/lebcwlp3d831F05+9B44A4B0WfsEwUQHR64gsH1kvJ+Ep/J9K2+n1hVl1CsGN23w==
   dependencies:
     tslib "~2.1.0"
-
-strip-comments@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/strip-comments/-/strip-comments-2.0.1.tgz#4ad11c3fbcac177a67a40ac224ca339ca1c1ba9b"
-  integrity sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==
 
 "through@>=2.2.7 <3":
   version "2.3.8"
