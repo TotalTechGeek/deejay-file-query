@@ -6,10 +6,11 @@ import { dsl, setupEngine } from 'deejay-rxjs-dsl'
 import { convertOperators } from './convertOperator.js'
 import { createInput, register } from './inputs/create.js'
 import { createOutput, Outputs } from './outputs/create.js'
+import { pathToFileURL } from 'url'
 import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.18').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.19').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
@@ -40,16 +41,16 @@ const additionalOperators = convertOperators(Outputs)
 
 if (options.extension) {
     // check if the extension is a file or a directory
-    const stats = fs.lstatSync(`./${options.extension}`)
+    const stats = fs.lstatSync(`${options.extension}`)
 
     if (stats.isDirectory()) {
-        options.extension = `./${options.extension}/index.js`
+        options.extension = `${options.extension}/index.js`
     } else if (!stats.isFile()) {
-        options.extension = `./${options.extension}.js`
+        options.extension = `${options.extension}.js`
     }
 
     // @ts-ignore We want to use top-level await.
-    const { asyncSetup, setup, inputs, operators, macros } = (await import(`file://${process.cwd()}/${options.extension}`))
+    const { asyncSetup, setup, inputs, operators, macros } = (await import(pathToFileURL(`${options.extension}`)))
 
     Object.assign(additionalOperators, operators || {})
     
