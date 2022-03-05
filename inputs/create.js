@@ -5,6 +5,7 @@ import { from, Observable } from 'rxjs'
 import { avroObservable } from './avro.js'
 import { csvObservable } from './csv.js'
 import { jsonObservable } from './json.js'
+import { xmlObservable } from './xml.js'
 
 /**
  * Extra Input Observables that are registered by an extension
@@ -24,14 +25,14 @@ export function register (name, func) {
 /**
  * A factory function that creates an observable that emits the contents of a file.
  * @param {string} file 
- * @param {'csv'|'bigjson'|'json'|'avro'|'custom'} format 
+ * @param {'csv'|'bigjson'|'json'|'avro'|'xml'|'custom'} format 
  * @param {any} [additional] Additional information to be passed to the input observer
  * @returns An input observable.
  */
 export function createInput (file, format, additional) {
     if (!format) {
         const extension = path.extname(file).substring(1).toLowerCase()
-        if (extension !== 'csv' && extension !== 'json' && extension !== 'avro') {
+        if (extension !== 'csv' && extension !== 'json' && extension !== 'avro' && extension !== 'xml') {
             throw new Error('Unknown Input Format')
         }
         format = extension
@@ -43,6 +44,10 @@ export function createInput (file, format, additional) {
 
     if (format === 'csv') {
         return csvObservable(file, additional)
+    }
+
+    if (format === 'xml') {
+        return xmlObservable(file, additional)
     }
 
     // this format exists to allow for streaming from json files, rather than parsing it all in.

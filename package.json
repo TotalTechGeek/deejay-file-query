@@ -1,6 +1,6 @@
 {
   "name": "deejay-file-query",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "A CLI tool that uses the deejay DSL to parse files",
   "main": "index.js",
   "author": "Jesse Daniel Mitchell",
@@ -12,6 +12,7 @@
     "commander": "^8.3.0",
     "deejay-rxjs-dsl": "^3.0.24",
     "fast-csv": "^4.3.6",
+    "fast-xml-parser": "^4.0.4",
     "rxjs": "^7.5.4"
   },
   "bin": {

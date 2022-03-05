@@ -10,9 +10,9 @@ import { pathToFileURL } from 'url'
 import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.24').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.25').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
-const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'custom'])
+const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'xml', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
 
 program.addOption(formatOption)
@@ -26,7 +26,7 @@ program.addOption(formatOption)
 
 program.parse(process.argv)
 
-/** @type {{ format: 'csv'|'bigjson'|'json'|'avro'|'custom', input: string, additional: string, output: string, export: 'console'|'json'|'csv'|'avro', extension?: string, command: string, program: string }} */
+/** @type {{ format: 'csv'|'bigjson'|'json'|'avro'|'xml'|'custom', input: string, additional: string, output: string, export: 'console'|'json'|'csv'|'avro', extension?: string, command: string, program: string }} */
 const options = program.opts()
 
 if (options.program && options.command) throw new Error('Cannot have both a command (-c) & a program (-p) set.')
