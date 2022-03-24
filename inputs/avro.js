@@ -10,5 +10,5 @@ import { getReadStream } from './stream.js'
  */
 export function avroObservable (file, additional) {
     const stream = getReadStream(file).pipe(new avro.streams.BlockDecoder())
-    return streamToObservable(stream)
+    return streamToObservable(stream, file)
 }

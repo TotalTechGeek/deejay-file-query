@@ -11,5 +11,5 @@ import { streamToObservable } from './streamToObservable.js'
  */
 export function csvObservable (file, additional) {
     const stream = getReadStream(file).pipe(csv.parse({ headers: true }))
-    return streamToObservable(stream)
+    return streamToObservable(stream, file)
 }

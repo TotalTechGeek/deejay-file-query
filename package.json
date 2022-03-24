@@ -1,6 +1,6 @@
 {
   "name": "deejay-file-query",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "A CLI tool that uses the deejay DSL to parse files",
   "main": "index.js",
   "author": "Jesse Daniel Mitchell",

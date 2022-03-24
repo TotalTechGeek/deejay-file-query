@@ -2,6 +2,7 @@
 import {XMLParser} from 'fast-xml-parser'
 import fs from 'fs'
 import { from } from 'rxjs'
+import { defineKey } from './defineKey.js'
 
 /**
  * Reads in the data from a XML file.
@@ -19,5 +20,5 @@ export function xmlObservable (file, additional) {
         alwaysCreateTextNode: true,
         textNodeName: 'value'
     })
-    return from([parser.parse(data)])
+    return defineKey(from([parser.parse(data)]), file)
 }

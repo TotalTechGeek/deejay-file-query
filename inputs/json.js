@@ -13,5 +13,5 @@ import { streamToObservable } from './streamToObservable.js'
  */
 export function jsonObservable (file, path = '*') {
     const stream = getReadStream(file).pipe(JSONStream.parse(path))
-    return streamToObservable(stream)
+    return streamToObservable(stream, file)
 }
