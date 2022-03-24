@@ -43,13 +43,7 @@ const additionalOperators = convertOperators(Outputs)
 
 if (options.extension) {
     // check if the extension is a file or a directory
-    const stats = fs.lstatSync(`${options.extension}`)
-
-    if (stats.isDirectory()) {
-        options.extension = `${options.extension}/index.js`
-    } else if (!stats.isFile()) {
-        options.extension = `${options.extension}.js`
-    }
+    options.extension = findExtension(options.extension)
 
     // @ts-ignore We want to use top-level await.
     const { asyncSetup, setup, inputs, operators, macros } = (await import(pathToFileURL(`${options.extension}`)))
@@ -84,3 +78,14 @@ createInput(options.input, options.format, options.additional).pipe(
     }),
     createOutput(options.output, options.export)
 ).subscribe()
+
+/** @param {string} path */
+function findExtension(path) {
+    const stats = fs.lstatSync(path)
+    if (stats.isDirectory()) {
+        return `${path}/index.js`
+    } else if (!stats.isFile()) {
+        return `${path}.js`
+    }
+    return path
+}
