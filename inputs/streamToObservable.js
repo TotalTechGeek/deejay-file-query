@@ -15,7 +15,10 @@ export function streamToObservable (stream, key) {
         stream
             .on('data', data => observer.next(data))
             .on('error', err => observer.error(err))
-            .on('end', () => observer.complete())
+            .on('end', () => {
+                if (stream.end) stream.end() 
+                observer.complete()
+            })
 
         return () => stream.end && stream.end()
     }), key)
