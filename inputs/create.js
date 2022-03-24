@@ -69,3 +69,15 @@ export function createInput (file, format, additional) {
         return imports[file](file, additional)
     }
 }
+
+export function addInputs (engine) {
+    // @ts-ignore
+    engine.addMethod('csv', data => csvObservable(...[].concat(data)))
+    // @ts-ignore
+    engine.addMethod('xml', data => xmlObservable(...[].concat(data)))
+    // @ts-ignore
+    engine.addMethod('json', data => jsonObservable(...[].concat(data)))
+    // @ts-ignore
+    engine.addMethod('avro', data => avroObservable(...[].concat(data)))
+    return engine
+}

@@ -4,13 +4,13 @@ import { Command, Option } from 'commander'
 import { LogicEngine, AsyncLogicEngine } from 'json-logic-engine'
 import { dsl, setupEngine } from 'deejay-rxjs-dsl'
 import { convertOperators } from './convertOperator.js'
-import { createInput, register } from './inputs/create.js'
+import { createInput, register, addInputs } from './inputs/create.js'
 import { createOutput, Outputs } from './outputs/create.js'
 import { pathToFileURL } from 'url'
 import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.26').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.27').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'xml', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
@@ -33,9 +33,11 @@ if (options.program && options.command) throw new Error('Cannot have both a comm
 if (options.program) options.command = fs.readFileSync(options.program, 'utf8').toString()
 
 const engine = setupEngine(new LogicEngine())
+addInputs(engine)
 
 /** @type {AsyncLogicEngine} */ // @ts-ignore
 const asyncEngine = setupEngine(new AsyncLogicEngine())
+addInputs(asyncEngine)
 
 const additionalOperators = convertOperators(Outputs)
 
