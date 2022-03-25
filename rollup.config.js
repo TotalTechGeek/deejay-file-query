@@ -35,7 +35,7 @@ function extension (file) {
 export default {
     output: {
         format: 'cjs',
-        file: 'dist/bundle.js',
+        file: 'dist/deejay.js',
     },
     
     plugins: [
@@ -47,11 +47,11 @@ export default {
             // This is a very explicit fix to deal with a rollup issue, but it's corrected with this.
             // These fixes should hopefully be rare.
             'const hexoid = require$$2;': 'const hexoid = require$$2["default"];',
-            "import RDKafka from './inputs/rdkafka.js'": '',
-            "RDKafka,": '',
+            // "import RDKafka from './inputs/rdkafka.js'": '',
+            // "RDKafka,": '',
             delimiters: ['', '']
         }),
-        terser(),
+        // terser(),
         json()
     ],
 };
