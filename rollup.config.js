@@ -20,7 +20,11 @@ function extension (file) {
     return replace({
         values: {
             ...replacements,
-            ".option('-e, --extension <extension>', 'An extension file that can be parsed.')": ''
+            ".option('-e, --extension <extension>', 'An extension file that can be parsed.')": '',
+            // These are used to suppress the giant source code dump on a deejay error.
+            'createInput(options.input': 'try { createInput(options.input',
+            "createOutput(options.output, options.export)\r\n).subscribe()": "createOutput(options.output, options.export)\r\n).subscribe()} catch(err) { console.error(err) }",
+            "createOutput(options.output, options.export)\n).subscribe()": "createOutput(options.output, options.export)\n).subscribe()} catch(err) { console.error(err) }"
         },
         delimiters: ['', ''],
         preventAssignment: true
