@@ -1,0 +1,9 @@
+{
+    "pkg": {
+        "assets": [
+            "node_modules/node-rdkafka/build/Release/*.dll",
+            "node_modules/node-rdkafka/build/Release/*.node",
+            "node_modules/sqlite3/lib/binding/*/*.node"
+        ]
+    }
+}

@@ -32,6 +32,21 @@ function extension (file) {
 }
 
 
+/**
+ * The nodeResolve API does not allow a blacklist, and it allows a RegExp to be passed in.
+ * However, it works by running ".test" on the RegExp,
+ * so this workaround takes a RegExp, and hijacks the test method on it.
+ * I had a different mechanism that used a funky regex, but this seemed simpler.
+ * @param  {...string} arr 
+ */
+function forbid (...arr) {
+    const regex = new RegExp('');
+    const set = new Set(arr)
+    regex.test = (pattern) => !set.has(pattern)
+    return [regex]
+}
+
+
 export default {
     output: {
         format: 'cjs',
@@ -41,17 +56,26 @@ export default {
     plugins: [
         extension(process.env.DEEJAY_EXTENSION),
         hash(),
-        nodeResolve(),
+        nodeResolve({
+            // We need to filter out binary dependencies here.
+            // If something needs to be external, add the name to the list.
+            resolveOnly: forbid(
+                'node-rdkafka',
+                'sqlite3'
+            )
+        }),
         commonjs(),
         replace({
             // This is a very explicit fix to deal with a rollup issue, but it's corrected with this.
             // These fixes should hopefully be rare.
             'const hexoid = require$$2;': 'const hexoid = require$$2["default"];',
+
+            // We should now be able to correctly import binary dependencies like RDKafka.
             // "import RDKafka from './inputs/rdkafka.js'": '',
             // "RDKafka,": '',
             delimiters: ['', '']
         }),
-        // terser(),
+        terser(),
         json()
     ],
 };
