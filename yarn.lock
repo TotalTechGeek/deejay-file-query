@@ -55,15 +55,15 @@ date-fns@^2.28.0:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.28.0.tgz#9570d656f5fc13143e50c975a3b6bbeb46cd08b2"
   integrity sha512-8d35hViGYx/QH0icHYCeLmsLmMUheMmTyV9Fcm6gvNwdw31yXXH+O85sOBJ+OLnLQMKZowvpKb6FgMIQjcpvQw==
 
-deejay-rxjs-dsl@^3.0.28:
-  version "3.0.28"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.28.tgz#08676683eb418238ede3509db0ce8ffa868b6073"
-  integrity sha512-UZTHgu9VA6GiM6Hd3XHNbq/fN5g1y16k7LH27kbbt1BcfDz0QCKzQAvOBSAIvw/9jfiIiu7aMPOkcGNRWjuwwA==
+deejay-rxjs-dsl@^3.0.29:
+  version "3.0.29"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.29.tgz#27e2976d3aa775fbb18ba810e142174bb58ed049"
+  integrity sha512-mtSTW1WEtyJdlGWQfdAicjzlZExtcfha/7J+WHDYlSxW5Dlig7bvscJpffgpNLJcdcQerPKO95h7cIZgo9/aCQ==
   dependencies:
     date-fns "^2.28.0"
     expiry-map "^2.0.0"
-    json-logic-engine "^1.1.18"
-    json-power-query "^1.1.18"
+    json-logic-engine "^1.1.19"
+    json-power-query "^1.1.19"
     lodash.throttle "^4.1.1"
     ramda "^0.28.0"
     ramda-adjunct "^3.0.0"
@@ -91,17 +91,17 @@ fast-xml-parser@^4.0.4:
   dependencies:
     strnum "^1.0.5"
 
-json-logic-engine@^1.1.18:
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-1.1.18.tgz#9ddfa0a290776989e7ef8da952688779c431331d"
-  integrity sha512-Tf9LtX+UZG03RMvZOOS+N3zeVS+uABUBjG+DMGiL7yV6gsTztkONmupojuLeSCtAGWfMrg8YE6mdMPDnL1ORTA==
+json-logic-engine@^1.1.19:
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-1.1.19.tgz#2a9ee3e3e01df5d159711833721b72e1769d089d"
+  integrity sha512-vXy1LJBzh+I27otUOBNwKq7OilQGIywSun2JT2e1m01Kqh562Le+gooVXVDmHYed91B9jShKTJHyGFUls/bWIw==
 
-json-power-query@^1.1.18:
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/json-power-query/-/json-power-query-1.1.18.tgz#bde3bc7988f1ba81558337f92c3fd2f810d224cd"
-  integrity sha512-zNRJydU8GsWjLYP0cQSepEkJkQOZ8dVXLrCN74mtEzLQzDZtbnJvza4s/V8XQ46z9DtEMfnfobiaSO8M+IMcPw==
+json-power-query@^1.1.19:
+  version "1.1.19"
+  resolved "https://registry.yarnpkg.com/json-power-query/-/json-power-query-1.1.19.tgz#893afbd6111c6d169c5450e13b169acb90e0b109"
+  integrity sha512-aWutdmQKtPpfrsnFa4jXLBDhD8R9/Gy//CELsFv4NqMPaU6E9SaasvRd1ySSZq3zptrWYhZtjIIhzXy+Tzz1Rw==
   dependencies:
-    json-logic-engine "^1.1.18"
+    json-logic-engine "^1.1.19"
 
 jsonparse@^1.2.0:
   version "1.3.1"
