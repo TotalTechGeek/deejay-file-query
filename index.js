@@ -10,7 +10,7 @@ import { pathToFileURL } from 'url'
 import fs from 'fs'
 
 const program = new Command()
-program.version('1.0.33').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
+program.version('1.0.34').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
 const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'xml', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
