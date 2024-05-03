@@ -12,8 +12,8 @@ import fs from 'fs'
 const program = new Command()
 program.version('1.0.35').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
-const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'csv', 'bigjson', 'avro', 'xml', 'custom'])
-const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'none']).default('console')
+const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'parquet', 'csv', 'bigjson', 'avro', 'xml', 'custom'])
+const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'parquet', 'none']).default('console')
 
 program.addOption(formatOption)
     .option('-i, --input <file>', 'The file to be processed', '$')
@@ -75,10 +75,13 @@ if (options.extension) {
     }
 }
 
+engine.addMethod('replace', ([data, search, replace]) => data.replace(new RegExp(search, 'g'), replace))
+
 createInput(options.input, options.format, options.additional).pipe(
     // @ts-ignore This is correct.
     ...dsl(`${options.command};`, {
         additionalOperators,
+        // @ts-ignore
         engine,
         asyncEngine
     }),

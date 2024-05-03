@@ -2,7 +2,7 @@
  * @template T
  * Adds a key property to an object.
  * @param {T} obj 
- * @param {string} key 
+ * @param {string | undefined} key 
  * @returns {T}
  */
 export function defineKey (obj, key) {
