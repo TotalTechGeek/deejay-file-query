@@ -12,7 +12,7 @@ import fs from 'fs'
 const program = new Command()
 program.version('1.0.35').name('deejay').description('A program written to allow you to use the deejay DSL on files to query out data.')
 
-const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'parquet', 'csv', 'bigjson', 'avro', 'xml', 'custom'])
+const formatOption = new Option('-f, --format <format>', 'The format of the file').choices(['json', 'parquet', 'csv', 'bigjson', 'avro', 'xml', 'xlsx', 'custom'])
 const outputOption = new Option('-x, --export <mode>', 'The output format').choices(['console', 'json', 'csv', 'avro', 'parquet', 'none']).default('console')
 
 program.addOption(formatOption)

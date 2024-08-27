@@ -7,6 +7,7 @@ import { csvObservable } from './csv.js'
 import { jsonObservable } from './json.js'
 import { xmlObservable } from './xml.js'
 import { parquetObservable } from './parquet.js'
+import { xlsxObservable } from './xlsx.js'
 
 /**
  * Extra Input Observables that are registered by an extension
@@ -26,7 +27,7 @@ export function register (name, func) {
 /**
  * A factory function that creates an observable that emits the contents of a file.
  * @param {string} file 
- * @param {'csv'|'bigjson'|'json'|'avro'|'xml'|'parquet'|'custom'} format 
+ * @param {'csv'|'bigjson'|'json'|'avro'|'xml'|'parquet'|'xlsx'|'custom'} format 
  * @param {any} [additional] Additional information to be passed to the input observer
  * @returns An input observable.
  */
@@ -34,7 +35,7 @@ export function createInput (file, format, additional) {
     if (!format) {
         const fileDetected = file.endsWith('.gz') ? file.substring(0, file.length - 3) : file
         const extension = path.extname(fileDetected).substring(1).toLowerCase()
-        if (extension !== 'csv' && extension !== 'json' && extension !== 'avro' && extension !== 'xml' && extension !== 'parquet') {
+        if (extension !== 'csv' && extension !== 'json' && extension !== 'avro' && extension !== 'xml' && extension !== 'parquet' && extension !== 'xlsx') {
             throw new Error(`Unknown Input Format: ${extension}`)
         }
         format = extension
@@ -54,6 +55,10 @@ export function createInput (file, format, additional) {
 
     if (format === 'xml') {
         return xmlObservable(file, additional)
+    }
+
+    if (format === 'xlsx') {
+        return xlsxObservable(file, additional)
     }
 
     // this format exists to allow for streaming from json files, rather than parsing it all in.
@@ -91,5 +96,7 @@ export function addInputs (engine) {
     engine.addMethod('avro', data => avroObservable(...[].concat(data)))
     // @ts-ignore
     engine.addMethod('parquet', data => parquetObservable(...[].concat(data)))
+    // @ts-ignore
+    engine.addMethod('xlsx', data => xlsxObservable(...[].concat(data)))
     return engine
 }
