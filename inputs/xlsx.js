@@ -28,7 +28,7 @@ export function xlsxObservable (file, additional = '') {
             return i.data.map(j => {
                 const obj = {}
                 if (options.includeSheet) obj._sheet = i.name
-                header.forEach((k, index) => obj[k] = j[index])
+                for (let index = 0; index < header.length; index++) obj[header[index]] = j[index]
                 return obj
             })
         })), file)
