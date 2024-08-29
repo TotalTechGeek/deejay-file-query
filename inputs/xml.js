@@ -12,7 +12,7 @@ import { defineKey } from './defineKey.js'
  */
 export function xmlObservable (file, additional) {
     if (file === '$') throw new Error('Reading XML from stdin is unsupported with this operator.')
-    const data = fs.readFileSync(file)
+    const data = additional === 'raw' ? file : fs.readFileSync(file) 
     const parser = new XMLParser({
         ignoreAttributes: false,
         allowBooleanAttributes: true,
