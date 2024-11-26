@@ -1290,15 +1290,15 @@ date-fns@^2.28.0:
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-deejay-rxjs-dsl@^3.0.35:
-  version "3.0.38"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.38.tgz#b9253d31585e2fc8752cd07ecdab9369150d1688"
-  integrity sha512-J/8avQslLvKtt+WWOMGdz0FomDXJshA1FPfFQJst/OhI5WkMMH1vKF/W1PrsZwz2pY4X044MlNoF7a+oj7jBmw==
+deejay-rxjs-dsl@^3.0.39:
+  version "3.0.39"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.39.tgz#aeafb909412aa1cf2adeffe832f71cd095b3fc80"
+  integrity sha512-uz6F+KttgkgrJ0EgMCVcTJ5Ig0AoIBTUXf4dg2z92xn25/Bb9YFkJCPCu9qOOIElsKnXkcp4/1PZiMCfjnrXEA==
   dependencies:
     date-fns "^2.28.0"
     expiry-map "^2.0.0"
-    json-logic-engine "^1.2.10"
-    json-power-query "^1.1.20"
+    json-logic-engine "^3.0.2"
+    json-power-query "^1.1.21"
     lodash.throttle "^4.1.1"
     ramda "^0.28.0"
     ramda-adjunct "^3.0.0"
@@ -1351,17 +1351,17 @@ isomorphic-ws@^4.0.1:
   resolved "https://registry.yarnpkg.com/isomorphic-ws/-/isomorphic-ws-4.0.1.tgz#55fd4cd6c5e6491e76dc125938dd863f5cd4f2dc"
   integrity sha512-BhBvN2MBpWTaSHdWRb/bwdZJ1WaehQ2L1KngkCkfLUGF0mAWAT1sQUQacEmQ0jXkFw/czDXPNQSL5u2/Krsz1w==
 
-json-logic-engine@^1.2.10, json-logic-engine@^1.2.8:
-  version "1.3.6"
-  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-1.3.6.tgz#28d9eac9d51704f57daca214cbf6c40c3d950be6"
-  integrity sha512-ZC3Le6W0vsGKPvoJYu5Xpca2A+0N0IsPwZEfJsJzdCwbuuZkFMsIhNNp4Y6Txh2+P+OquADhgnI450KMStybqA==
+json-logic-engine@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-3.0.2.tgz#745a7bf72737063f186ec23ed6f3c0b409000c44"
+  integrity sha512-PYk9/T/wXSOMy86Wor/L12hF3Z4UiO0ooJi7AezLGUS0UoviFIItO9rBEP4xDhRiImlFlJ5prb/9pUZNZ1+0NA==
 
-json-power-query@^1.1.20:
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/json-power-query/-/json-power-query-1.1.20.tgz#afaf4a5ea3db2321955ab7e2be0034749252e88a"
-  integrity sha512-j1R6iSuM/9lSJJYvJXg5294wQQw9VkSmZ6iEe0VGXHmh3Z4eVEFWRW+9dXalTjoYybS1GkpyUiJ02suDJ6FbRw==
+json-power-query@^1.1.21:
+  version "1.1.21"
+  resolved "https://registry.yarnpkg.com/json-power-query/-/json-power-query-1.1.21.tgz#a2a9e9f7067cc33010aa9c63e7f504ccc2e87ea4"
+  integrity sha512-149BMEOYwiSkLuHG4I5e3Pxz7twxyKSkI2gOwz1ZYljLq0aJEsFv83irVIlExNH3ZPVF65PRpkO5HQFJEDnMOw==
   dependencies:
-    json-logic-engine "^1.2.8"
+    json-logic-engine "^3.0.2"
 
 jsonparse@^1.2.0:
   version "1.3.1"
