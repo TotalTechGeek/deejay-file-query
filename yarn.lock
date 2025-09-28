@@ -1290,14 +1290,14 @@ date-fns@^2.28.0:
   dependencies:
     "@babel/runtime" "^7.21.0"
 
-deejay-rxjs-dsl@^3.0.39:
-  version "3.0.39"
-  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-3.0.39.tgz#aeafb909412aa1cf2adeffe832f71cd095b3fc80"
-  integrity sha512-uz6F+KttgkgrJ0EgMCVcTJ5Ig0AoIBTUXf4dg2z92xn25/Bb9YFkJCPCu9qOOIElsKnXkcp4/1PZiMCfjnrXEA==
+deejay-rxjs-dsl@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/deejay-rxjs-dsl/-/deejay-rxjs-dsl-4.0.2.tgz#53ab9b5b5b0e28b25ec0dd30af1aabc8c04dfbd1"
+  integrity sha512-mTljHiyCQU25C8fJLVyk9fsCX125fRHE9tGrh4yb/dmQ/BAncCN1D56P2EjfJ74cuc4frrowi6aFB2c0Ns0Wuw==
   dependencies:
     date-fns "^2.28.0"
     expiry-map "^2.0.0"
-    json-logic-engine "^3.0.2"
+    json-logic-engine "^5.0.2"
     json-power-query "^1.1.21"
     lodash.throttle "^4.1.1"
     ramda "^0.28.0"
@@ -1355,6 +1355,11 @@ json-logic-engine@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-3.0.2.tgz#745a7bf72737063f186ec23ed6f3c0b409000c44"
   integrity sha512-PYk9/T/wXSOMy86Wor/L12hF3Z4UiO0ooJi7AezLGUS0UoviFIItO9rBEP4xDhRiImlFlJ5prb/9pUZNZ1+0NA==
+
+json-logic-engine@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/json-logic-engine/-/json-logic-engine-5.0.2.tgz#355d3026e17adc2031227486f836981ef934bb08"
+  integrity sha512-3HRwlu5TBQgBLFx72JFqQ/y0CnAO+HaNjm7+lq92UIn/WindLKIHkbBkfoA07c1zEE2MsagzcL2QTLTz+KCypw==
 
 json-power-query@^1.1.21:
   version "1.1.21"
